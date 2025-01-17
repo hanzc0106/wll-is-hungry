@@ -25,8 +25,8 @@ const props = defineProps(['dishes'])
 .dish-list-dishes {
   padding: 0.6rem 0.5rem;
 
-  width: 10rem;
-  min-height: 10rem;
+  width: 8rem;
+  min-height: 8rem;
 
   display: flex;
   flex-direction: column;
