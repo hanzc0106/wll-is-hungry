@@ -3,7 +3,7 @@ const api = '/api/v1'
 
 // 查询素菜
 export async function getAllVegeRecipes() {
-  const res = await fetch(`${host}${api}/allVege`, {
+  const res = await fetch(`${host}${api}/recipe/allVege`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ export async function getAllVegeRecipes() {
 
 // 查询荤菜
 export async function getAllMeatRecipes() {
-  const res = await fetch(`${host}${api}/allMeat`, {
+  const res = await fetch(`${host}${api}/recipe/allMeat`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -26,13 +26,13 @@ export async function getAllMeatRecipes() {
 }
 
 // 查询菜谱
-export async function getRecipesByIds(recipeIds: number[]) {
-  const res = await fetch(`${host}${api}/query`, {
+export async function getRecipesByIds(ids: number[]) {
+  const res = await fetch(`${host}${api}/recipe/query`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ recipeIds }),
+    body: JSON.stringify({ ids }),
   })
   const data = await res.json()
   return data

@@ -11,6 +11,7 @@ import { randomPick } from '@/utils/random'
 import InputNumber from '@/components/ui-kit/InputNumber.vue'
 import AppButton from '@/components/ui-kit/AppButton.vue'
 import DishList from '@/components/DishList.vue'
+import router from '@/router'
 
 const recipesStore = useRecipesStore()
 const { vegeRecipes, meatRecipes } = storeToRefs(recipesStore)
@@ -42,6 +43,13 @@ const generate = () => {
   generateMeatList()
 }
 
+const showRecipes = () => {
+  const vegeIds = pickedVegeDishes.value.map((recipe) => recipe.id)
+  const meatIds = pickedMeatDishes.value.map((recipe) => recipe.id)
+  const ids = [...vegeIds, ...meatIds]
+  router.push({ name: 'recipes', query: { ids: ids.join(',') } })
+}
+
 const showGenerate = computed(() => vegeCount.value > 0 || meatCount.value > 0)
 const hasGenerated = computed(() => pickedMeatDishes.value.length > 0 || pickedVegeDishes.value.length > 0)
 </script>
@@ -67,6 +75,7 @@ const hasGenerated = computed(() => pickedMeatDishes.value.length > 0 || pickedV
           >荤菜们</DishList
         >
       </div>
+      <AppButton v-if="hasGenerated" class="recipe-btn" @click="showRecipes">查看菜谱</AppButton>
     </div>
   </main>
 </template>
