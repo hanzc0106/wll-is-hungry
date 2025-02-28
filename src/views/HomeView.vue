@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
+import type { Recipe } from '@/types'
 
 import { useEatSettingStore } from '@/stores/eatSetting'
+import { useRecipesStore } from '@/stores/recipes'
 import { randomPick } from '@/utils/random'
-import { vegeDishes, meatDishes } from '@/constants/dishes'
+// import { vegeDishes, meatDishes } from '@/constants/dishes'
 
 import InputNumber from '@/components/ui-kit/InputNumber.vue'
 import AppButton from '@/components/ui-kit/AppButton.vue'
 import DishList from '@/components/DishList.vue'
+
+const recipesStore = useRecipesStore()
+const { vegeRecipes, meatRecipes } = storeToRefs(recipesStore)
 
 const eatSettingStore = useEatSettingStore()
 const { vegeCount, meatCount } = storeToRefs(eatSettingStore)
@@ -21,15 +26,15 @@ const changeMeal = (count: number) => {
   eatSettingStore.setMeatCount(count)
 }
 
-const pickedVegeDishes = ref<{ name: string }[]>([])
-const pickedMeatDishes = ref<{ name: string }[]>([])
+const pickedVegeDishes = ref<Recipe[]>([])
+const pickedMeatDishes = ref<Recipe[]>([])
 
 const generateVegeList = () => {
-  pickedVegeDishes.value = randomPick(vegeDishes, vegeCount.value)
+  pickedVegeDishes.value = randomPick(vegeRecipes.value, vegeCount.value)
 }
 
 const generateMeatList = () => {
-  pickedMeatDishes.value = randomPick(meatDishes, meatCount.value)
+  pickedMeatDishes.value = randomPick(meatRecipes.value, meatCount.value)
 }
 
 const generate = () => {
