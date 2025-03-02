@@ -15,11 +15,11 @@ export const useRecipesStore = defineStore('queryRecipes', () => {
   }
 
   onMounted(() => {
-    getAllVegeRecipes().then((res) => {
-      setVegeRecipes(res.data)
+    getAllVegeRecipes().then((data) => {
+      setVegeRecipes(data)
     })
-    getAllMeatRecipes().then((res) => {
-      setMeatRecipes(res.data)
+    getAllMeatRecipes().then((data) => {
+      setMeatRecipes(data)
     })
   })
 

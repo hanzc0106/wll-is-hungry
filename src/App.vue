@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { computed } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
+
+// 获取当前路由
+const route = useRoute()
+// 是否是recipes路由
+const isRecipes = computed(() => route.name === 'recipes')
+console.log(isRecipes)
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/meal.svg" width="125" height="125" />
-    <div class="wrapper">
-      <HelloWorld />
-    </div>
-  </header>
-
   <RouterView />
 </template>
 

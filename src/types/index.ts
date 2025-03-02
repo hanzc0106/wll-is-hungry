@@ -1,4 +1,10 @@
-export type Ingredient = {
+export type Res<T> = {
+  code: number
+  data: T
+  message: string
+}
+
+export interface Ingredient {
   id: number
   recipe_id: number
   NAME: string
@@ -7,20 +13,22 @@ export type Ingredient = {
   is_required: boolean
 }
 
-export type Step = {
+export interface Step {
   id: number
   recipe_id: number
   step_number: number
   description: string
 }
 
-export type Recipe = {
+export interface Recipe {
   id: number
   name: string
   description?: string
-  summary: string
+  summary: string[]
   createdAt: Date
   updatedAt?: Date
   ingredients?: Ingredient[]
   steps?: Step[]
 }
+
+export type RecipeRes = Recipe & { summary: string }
