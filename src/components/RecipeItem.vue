@@ -87,6 +87,7 @@ const seasoningList = computed(() => ingredients.filter((item) => item.type === 
   }
 }
 .stepsWrap {
+  flex: 1;
 }
 .summaryWrap {
   h2 {
