@@ -12,6 +12,8 @@ export async function getAllVegeRecipes(): Promise<RecipeRes[]> {
     headers: {
       'Content-Type': 'application/json',
     },
+    mode: 'cors',
+    credentials: 'omit',
   })
   const data = (await res.json()) as Res<RecipeRes[]>
   return data.data
@@ -24,6 +26,8 @@ export async function getAllMeatRecipes(): Promise<RecipeRes[]> {
     headers: {
       'Content-Type': 'application/json',
     },
+    mode: 'cors',
+    credentials: 'omit',
   })
   const data = (await res.json()) as Res<RecipeRes[]>
   return data.data
@@ -36,6 +40,8 @@ export async function getRecipesByIds(ids: number[]): Promise<RecipeRes[]> {
     headers: {
       'Content-Type': 'application/json',
     },
+    mode: 'cors',
+    credentials: 'omit',
     body: JSON.stringify({ ids }),
   })
   const data = (await res.json()) as Res<RecipeRes[]>
