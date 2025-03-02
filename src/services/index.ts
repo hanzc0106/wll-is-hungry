@@ -1,6 +1,6 @@
 import type { RecipeRes, Res } from '@/types'
 
-const host = 'http://localhost:3232'
+const host = 'http://23.106.129.105:3232'
 // const host = 'http://154.8.144.95:3232'
 // const host = 'http://debian.hanzc.fun:3232'
 const api = '/api/v1'
