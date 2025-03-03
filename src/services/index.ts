@@ -1,14 +1,15 @@
 import type { RecipeRes, Res } from '@/types'
 
-const host = 'http://23.106.129.105:3232'
-// const host = 'http://154.8.144.95:3232'
+// const host = 'http://localhost:3232'
+// const host = 'http://23.106.129.105:3232'
+const host = 'http://154.8.144.95:3232'
 // const host = 'http://debian.hanzc.fun:3232'
 const api = '/api/v1'
 
 // 查询素菜
 export async function getAllVegeRecipes(): Promise<RecipeRes[]> {
   const res = await fetch(`${host}${api}/recipe/allVege`, {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -22,7 +23,7 @@ export async function getAllVegeRecipes(): Promise<RecipeRes[]> {
 // 查询荤菜
 export async function getAllMeatRecipes(): Promise<RecipeRes[]> {
   const res = await fetch(`${host}${api}/recipe/allMeat`, {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
