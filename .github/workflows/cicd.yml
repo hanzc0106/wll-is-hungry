@@ -65,3 +65,5 @@ jobs:
           strip_components: 1
           timeout: 120s
           overwrite: true
+          debug: true       # 添加调试模式
+          port: 22         # 明确指定 SSH 端口
