@@ -72,18 +72,14 @@ const seasoningList = computed(() => ingredients.filter((item) => item.type === 
 }
 .ingredientsWrap {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   .ingredients,
   .seasonings {
+    width: 100%;
     padding: 8px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
-  }
-  .ingredients {
-    flex: 1;
-  }
-  .seasonings {
-    flex: 1;
   }
 }
 .stepsWrap {
@@ -91,6 +87,17 @@ const seasoningList = computed(() => ingredients.filter((item) => item.type === 
 }
 .summaryWrap {
   h2 {
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .ingredientsWrap {
+    flex-wrap: wrap;
+    gap: 16px;
+    .ingredients,
+    .seasonings {
+      flex: 1;
+    }
   }
 }
 </style>
