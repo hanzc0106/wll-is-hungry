@@ -57,13 +57,13 @@ jobs:
       - name: Deploy to Tencent Cloud
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.TENCENT_HOST }}
-          username: ${{ secrets.TENCENT_USERNAME }}
+          host: ${{ vars.TENCENT_HOST }}
+          username: ${{ vars.TENCENT_USERNAME }}
           key: ${{ secrets.ID_ED25519_GITHUB_ACTIONS }}
           source: 'dist/'
           target: '/var/www/webpage/'
           strip_components: 1
           timeout: 120s
           overwrite: true
-          debug: true       # 添加调试模式
-          port: 22         # 明确指定 SSH 端口
+          debug: true # 添加调试模式
+          port: 22 # 明确指定 SSH 端口
