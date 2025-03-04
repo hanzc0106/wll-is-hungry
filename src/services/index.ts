@@ -1,10 +1,8 @@
 import type { RecipeRes, Res } from '@/types'
+import { config } from '@/config/constants'
+console.log(import.meta.env.MODE)
 
-// const host = 'http://localhost:3232'
-// const host = 'http://23.106.129.105:3232'
-const host = 'http://154.8.144.95:3232'
-// const host = 'http://debian.hanzc.fun:3232'
-const api = '/api/v1'
+const { host, apiPath: api } = config
 
 // 查询素菜
 export async function getAllVegeRecipes(): Promise<RecipeRes[]> {
