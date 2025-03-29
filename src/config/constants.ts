@@ -4,7 +4,7 @@ interface Config {
 }
 
 const prodConfig: Config = {
-  host: 'http://154.8.144.95:3232',
+  host: 'https://cook.hanzc.fun',
   apiPath: '/api/v1',
 }
 
