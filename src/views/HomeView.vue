@@ -67,7 +67,7 @@ const hasGenerated = computed(() => pickedMeatDishes.value.length > 0 || pickedV
 </script>
 
 <template>
-  <div class="home">
+  <section class="home">
     <HomeHeader />
     <main>
       <div class="settings">
@@ -92,12 +92,13 @@ const hasGenerated = computed(() => pickedMeatDishes.value.length > 0 || pickedV
         <AppButton v-if="hasGenerated" class="recipe-btn" @click="showRecipes"><h3>查看菜谱</h3></AppButton>
       </div>
     </main>
-  </div>
+  </section>
 </template>
 
 <style scoped>
 .home {
-  min-height: 100vh;
+  padding-block: 2rem;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,7 +1,7 @@
 <template>
-  <div class="recipes">
+  <section class="recipes">
     <RecipeItem v-for="(recipe, index) of recipes" :key="recipe.id" :recipe="recipe" :index="index" />
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -35,7 +35,7 @@ onMounted(getRecipes)
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  padding-block: 40px 80px;
+  padding: 2rem 1rem;
 }
 
 @media (min-width: 1024px) {

@@ -2,7 +2,7 @@
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/meal.svg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="@/assets/meal.svg" />
     <div class="wrapper">
       <div class="greetings">
         <h1 class="green">今晚吃什么</h1>
@@ -19,26 +19,28 @@ header {
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin-inline: auto;
+  width: 100px;
+  height: 100px;
 }
 
 h1 {
   font-weight: 500;
   font-size: 2rem;
 
-  position: relative;
   text-align: center;
-  top: -10px;
 }
 
 @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
+    gap: 1rem;
   }
 
   .logo {
-    margin: 0 2rem 0 0;
+    width: 100px;
+    height: 100px;
   }
 
   .wrapper {
