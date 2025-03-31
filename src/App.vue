@@ -18,9 +18,9 @@ const goHome = () => {
 </script>
 
 <template>
-  <header>
+  <header v-if="isRecipes">
     <div class="header-content">
-      <a v-if="isRecipes" class="go-back" @click="goBack">返回</a>
+      <a class="go-back" @click="goBack">返回</a>
       <nav>
         <img alt="Vue logo" class="logo" src="@/assets/meal.svg" @click="goHome" />
       </nav>
