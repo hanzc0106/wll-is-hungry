@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import type { Recipe } from '@/types'
 
@@ -12,6 +12,7 @@ import InputNumber from '@/components/ui-kit/InputNumber.vue'
 import AppButton from '@/components/ui-kit/AppButton.vue'
 import DishList from '@/components/DishList.vue'
 import router from '@/router'
+import { useRoute } from 'vue-router'
 
 const recipesStore = useRecipesStore()
 const { vegeRecipes, meatRecipes } = storeToRefs(recipesStore)
@@ -64,6 +65,20 @@ const showRecipes = () => {
 
 const showGenerate = computed(() => vegeCount.value > 0 || meatCount.value > 0)
 const hasGenerated = computed(() => pickedMeatDishes.value.length > 0 || pickedVegeDishes.value.length > 0)
+
+const route = useRoute()
+onMounted(() => {
+  console.log(route.query.ids)
+  if (route.query.ids) {
+    const ids = route.query.ids as string
+    const pickedIds = ids.split(',').map(Number)
+    console.log(pickedIds)
+    if (pickedIds.length === 0) return
+    pickedVegeDishes.value = vegeRecipes.value.filter((recipe) => pickedIds.includes(recipe.id))
+    pickedMeatDishes.value = meatRecipes.value.filter((recipe) => pickedIds.includes(recipe.id))
+    console.log(vegeRecipes.value, meatRecipes.value)
+  }
+})
 </script>
 
 <template>
