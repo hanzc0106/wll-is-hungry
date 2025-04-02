@@ -43,7 +43,7 @@ jobs:
       - name: Build
         run: |
           echo "开始构建"
-          pnpm install
+          pnpm install --frozen-lockfile
           pnpm build
           echo "构建完成"
           ls ${{ github.workspace }}/dist
@@ -53,6 +53,28 @@ jobs:
         with:
           name: dist
           path: dist
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      # 新增构建产物校验
+      - name: Validate Artifacts
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "构建产物不存在"
+            exit 1
+          fi
+          echo "构建产物验证通过"
 
       - name: Deploy to Tencent Cloud
         uses: appleboy/scp-action@v0.1.4
@@ -65,5 +87,12 @@ jobs:
           strip_components: 1
           timeout: 120s
           overwrite: true
-          debug: true # 添加调试模式
-          port: 22 # 明确指定 SSH 端口
+          debug: true
+          port: 22
+
+      # 新增部署后健康检查
+      - name: Health Check
+        run: |
+          echo "等待服务启动..."
+          sleep 10
+          curl -I https://hanzc.fun || echo "健康检查失败"
