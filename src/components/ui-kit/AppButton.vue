@@ -9,4 +9,8 @@ import { defineEmits } from 'vue'
 defineEmits(['click'])
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  user-select: none;
+}
+</style>

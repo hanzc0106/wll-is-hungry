@@ -60,6 +60,7 @@ header {
   & .go-back {
     position: absolute;
     left: 1.5rem;
+    cursor: pointer;
   }
 
   & .logo {

@@ -18,6 +18,7 @@ const props = defineProps(['dishes'])
 }
 
 .dish-list h3 {
+  user-select: none;
   margin-bottom: 0.2rem;
   text-align: center;
 }
