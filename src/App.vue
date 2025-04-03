@@ -29,7 +29,13 @@ const goHome = () => {
   <main>
     <RouterView />
   </main>
-  <footer><a href="https://beian.miit.gov.cn/" target="_blank" ref="noreferer">京ICP备2025113239号-1</a></footer>
+  <footer>
+    <a href="https://beian.miit.gov.cn/" target="_blank" ref="noreferer">京ICP备2025113239号-1</a>
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011402054575" target="_blank" ref="noreferer">
+      <img src="@/assets/beian.png" height="16" />
+      京公网安备11011402054575号
+    </a>
+  </footer>
 </template>
 
 <style scoped>
@@ -73,7 +79,16 @@ main {
 
 footer {
   padding-block: 1rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
 }
 
 @media (min-width: 1024px) {
