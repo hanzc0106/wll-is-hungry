@@ -14,7 +14,10 @@ const props = defineProps({
   },
 })
 
-const { NAME: name, quantity, is_required } = props.ingredient as Ingredient
+const {
+  name,
+  recipe_ingredients: { quantity, is_required },
+} = props.ingredient as Required<Ingredient>
 </script>
 
 <style scoped>

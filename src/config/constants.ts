@@ -9,7 +9,7 @@ const prodConfig: Config = {
 }
 
 const devConfig: Config = {
-  host: 'http://154.8.144.95:3232',
+  host: 'http://localhost:3232',
   apiPath: '/api/v1',
 }
 
