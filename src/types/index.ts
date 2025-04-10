@@ -4,13 +4,18 @@ export type Res<T> = {
   message: string
 }
 
+export interface RecipeIngredient {
+  recipe_id: number
+  ingredient_id: number
+  quantity: string
+  is_required: boolean
+}
+
 export interface Ingredient {
   id: number
-  recipe_id: number
-  NAME: string
-  quantity: string
   type: 'ingredient' | 'seasoning'
-  is_required: boolean
+  name: string
+  recipe_ingredients?: RecipeIngredient
 }
 
 export interface Step {

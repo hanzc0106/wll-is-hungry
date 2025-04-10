@@ -68,15 +68,12 @@ const hasGenerated = computed(() => pickedMeatDishes.value.length > 0 || pickedV
 
 const route = useRoute()
 onMounted(() => {
-  console.log(route.query.ids)
   if (route.query.ids) {
     const ids = route.query.ids as string
     const pickedIds = ids.split(',').map(Number)
-    console.log(pickedIds)
     if (pickedIds.length === 0) return
     pickedVegeDishes.value = vegeRecipes.value.filter((recipe) => pickedIds.includes(recipe.id))
     pickedMeatDishes.value = meatRecipes.value.filter((recipe) => pickedIds.includes(recipe.id))
-    console.log(vegeRecipes.value, meatRecipes.value)
   }
 })
 </script>

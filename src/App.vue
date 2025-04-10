@@ -6,7 +6,6 @@ import { RouterView, useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 // 是否是recipes路由
 const isRecipes = computed(() => route.name === 'recipes')
-console.log(isRecipes)
 const router = useRouter()
 
 const goBack = () => {
@@ -81,14 +80,20 @@ main {
 footer {
   padding-block: 1rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  row-gap: 0;
+  column-gap: 0.5rem;
 
   a {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0;
+
+    &:hover {
+      background-color: unset;
+    }
   }
 }
 
@@ -109,6 +114,11 @@ footer {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+  }
+
+  footer {
+    row-gap: 0.5rem;
+    column-gap: 1rem;
   }
 }
 </style>
