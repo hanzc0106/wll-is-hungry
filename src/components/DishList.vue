@@ -13,10 +13,15 @@ const props = defineProps(['dishes'])
 </script>
 
 <style scoped>
+.dish-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .dish-list:hover {
   cursor: pointer;
 }
-
 .dish-list h3 {
   user-select: none;
   margin-bottom: 0.2rem;
@@ -28,6 +33,7 @@ const props = defineProps(['dishes'])
 
   width: 8rem;
   min-height: 8rem;
+  flex: 1;
 
   display: flex;
   flex-direction: column;
