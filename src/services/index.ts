@@ -1,6 +1,5 @@
 import type { RecipeRes, Res } from '@/types'
 import { config } from '@/config/constants'
-console.log(import.meta.env.MODE)
 
 const { host, apiPath: api } = config
 

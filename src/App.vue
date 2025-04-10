@@ -6,7 +6,6 @@ import { RouterView, useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 // 是否是recipes路由
 const isRecipes = computed(() => route.name === 'recipes')
-console.log(isRecipes)
 const router = useRouter()
 
 const goBack = () => {

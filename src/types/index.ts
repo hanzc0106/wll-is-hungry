@@ -13,7 +13,7 @@ export interface RecipeIngredient {
 
 export interface Ingredient {
   id: number
-  recipe_id: number
+  type: 'ingredient' | 'seasoning'
   name: string
   recipe_ingredients?: RecipeIngredient
 }
