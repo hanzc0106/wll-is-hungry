@@ -1,35 +1,67 @@
 <script setup lang="ts">
-const props = defineProps(['label', 'max', 'min', 'defaultValue'])
-const emits = defineEmits(['change'])
+const props = defineProps({
+  label: {
+    type: String,
+    default: '',
+  },
+  max: {
+    type: Number,
+    default: 5,
+  },
+  min: {
+    type: Number,
+    default: 0,
+  },
+  value: {
+    type: Number,
+    default: 0,
+  },
+  defaultValue: {
+    type: Number,
+    default: 0,
+  },
+})
+const emits = defineEmits(['update:modelValue', 'change', 'input'])
 
 import { ref, computed } from 'vue'
 import AppButton from './AppButton.vue'
 
-const min = computed(() => props.min || 0)
-const max = computed(() => props.max || 5)
-const value = ref(props.defaultValue || 0)
+const min = computed(() => props.min)
+const max = computed(() => props.max)
+const value = ref(props.value || props.defaultValue)
 
 const disableSub = computed(() => value.value === min.value)
 const disableAdd = computed(() => value.value === max.value)
 
+const handleChange = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  const val = parseInt(target.value)
+  const displayVal = Object.is(val, NaN) ? 0 : val < min.value ? min.value : val > max.value ? max.value : val
+  value.value = displayVal
+  emits('update:modelValue', value.value)
+  emits('change', value.value)
+}
+
+const handleInput = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  const val = parseInt(target.value)
+  const displayVal = Object.is(val, NaN) ? 0 : val < min.value ? min.value : val > max.value ? max.value : val
+  value.value = displayVal
+  emits('update:modelValue', value.value)
+  emits('input', value.value)
+}
+
 const sub = () => {
   if (value.value <= min.value) return
   value.value--
+  emits('update:modelValue', value.value)
   emits('change', value.value)
 }
 
 const add = () => {
   if (value.value >= max.value) return
   value.value++
-  emits('change', value.value)
-}
-
-const input = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  const intV = parseInt(target.value)
-  const displayV = Object.is(intV, NaN) ? 0 : intV < min.value ? min.value : intV > max.value ? max.value : intV
-  value.value = displayV
-  target.value = displayV
+  emits('update:modelValue', value.value)
   emits('change', value.value)
 }
 </script>
@@ -38,24 +70,14 @@ const input = (event: Event) => {
   <div class="input-number">
     <label v-if="props.label" class="label">{{ props.label }}: </label>
     <AppButton class="btn btn-sub" :class="disableSub" @click="sub">-</AppButton>
-    <input class="input" type="text" :value="value" @change="input" />
+    <input class="input" type="text" :value="value" @change="handleChange" @input="handleInput" />
     <AppButton class="btn btn-add" :class="disableAdd" @click="add">+</AppButton>
   </div>
 </template>
 
 <style scoped>
-.input-number {
-}
-
 .label {
   margin-inline-end: 1rem;
-}
-
-.btn {
-}
-.btn-sub {
-}
-.btn-add {
 }
 
 .disableSub {

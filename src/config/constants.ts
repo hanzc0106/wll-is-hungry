@@ -9,7 +9,8 @@ const prodConfig: Config = {
 }
 
 const devConfig: Config = {
-  host: 'http://localhost:3232',
+  // host: 'http://localhost:3232',
+  host: 'https://hanzc.fun',
   apiPath: '/api/v1',
 }
 
